@@ -87,7 +87,7 @@ client/
 
 Here's a walkthrough of implemented features:
 
-<img src='https://www.veed.io/view/3f160a3a-c1d5-4d60-80db-08d0f67316fe' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/a/YtqzqX3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace the link above with your own GIF. A raw screen recording (videoplayback.mp4) is included in the repo root — convert it to a GIF before submitting. -->
 GIF created with ...  GIF tool here
