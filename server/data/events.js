@@ -1,127 +1,167 @@
-// Seed data for BookNook events. Each event belongs to a location via location_id.
-// Dates are a mix of past and future (relative to mid-2026) so the countdown and
+// Seed data for BookNook events. Each event belongs to a location via location_id,
+// has a category (Book Club, Public Reading, or Book Sale), and features one of the
+// individual books carried over from the BookNookPlus catalog (title, cover, price).
+// Dates mix past and future (relative to mid-2026) so the countdown and the
 // "event has passed" formatting can both be demonstrated.
 const eventData = [
-  // The Reading Room (1)
+  // ---------- Book Clubs ----------
   {
-    title: 'An Evening with Tana French',
+    title: 'Brain Science Book Club',
     location_id: 1,
+    category: 'Book Club',
+    featured_book: 'The 5 Pillars of Brain Optimization',
+    price: '$14.99',
+    host: 'The Reading Room',
+    image: 'https://m.media-amazon.com/images/I/61JeDb5SWIL._SL1499_.jpg',
+    description: 'A lively monthly discussion of "The 5 Pillars of Brain Optimization." Newcomers welcome — copies available at the desk.',
+    event_date: '2026-09-12T18:00:00'
+  },
+  {
+    title: 'Decision-Makers Book Club',
+    location_id: 3,
+    category: 'Book Club',
+    featured_book: 'Thinking in Bets',
+    price: '$56.01',
+    host: 'Brew & Books Café',
+    image: 'https://m.media-amazon.com/images/I/71EHb6TS9CL._SL1500_.jpg',
+    description: 'We dig into Annie Duke’s "Thinking in Bets" over coffee. Come ready to argue about probability and poker.',
+    event_date: '2026-07-19T10:30:00'
+  },
+  {
+    title: 'Deep Thinkers Circle',
+    location_id: 4,
+    category: 'Book Club',
+    featured_book: 'Maps of Meaning',
+    price: '$24.99',
+    host: 'Moonlight Pages',
+    image: 'https://m.media-amazon.com/images/I/61OGpzaVLvL._SL1500_.jpg',
+    description: 'A slow, chapter-by-chapter read of "Maps of Meaning." Heady conversation under the string lights.',
+    event_date: '2026-10-08T19:30:00'
+  },
+  {
+    title: 'Dev Patterns Book Club',
+    location_id: 2,
+    category: 'Book Club',
+    featured_book: 'Head First Design Patterns',
+    price: '$40.00',
+    host: 'Chapter & Verse',
+    image: 'https://m.media-amazon.com/images/I/91bobQSPQrL._SL1500_.jpg',
+    description: 'Software folks unite to work through "Head First Design Patterns," one pattern per session. Laptops encouraged.',
+    event_date: '2026-04-22T18:30:00'
+  },
+  {
+    title: 'Big Questions Book Club',
+    location_id: 1,
+    category: 'Book Club',
+    featured_book: 'Return of the God Hypothesis',
+    price: '$14.03',
     host: 'Downtown Library Friends',
-    image: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=800&q=80',
-    description: 'Bestselling mystery author Tana French discusses her latest novel, followed by a Q&A and signing.',
-    event_date: '2026-09-18T18:30:00'
+    image: 'https://m.media-amazon.com/images/I/91zjozXE0yL._SL1500_.jpg',
+    description: 'A respectful, curious debate on Stephen Meyer’s "Return of the God Hypothesis." All viewpoints welcome.',
+    event_date: '2026-11-05T18:00:00'
   },
+
+  // ---------- Public Readings ----------
   {
-    title: 'Classics Book Club: Jane Eyre',
+    title: 'Public Reading: Basic Economics',
     location_id: 1,
+    category: 'Public Reading',
+    featured_book: 'Basic Economics',
+    price: '$13.92',
     host: 'The Reading Room',
-    image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80',
-    description: 'Monthly deep-dive into a literary classic. This month: Charlotte Brontë’s Jane Eyre. Newcomers welcome.',
-    event_date: '2026-07-12T17:00:00'
+    image: 'https://m.media-amazon.com/images/I/61eKb6xPlEL._SL1500_.jpg',
+    description: 'A guest economist reads and unpacks key chapters of Thomas Sowell’s "Basic Economics," followed by open Q&A.',
+    event_date: '2026-08-14T17:00:00'
   },
   {
-    title: 'Silent Reading Hour',
-    location_id: 1,
-    host: 'The Reading Room',
-    image: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=800&q=80',
-    description: 'Bring your current read and enjoy a dedicated hour of quiet, distraction-free reading with tea provided.',
-    event_date: '2026-05-30T16:00:00'
-  },
-
-  // Chapter & Verse (2)
-  {
-    title: 'Friday Night Poetry Slam',
-    location_id: 2,
-    host: 'Chapter & Verse',
-    image: 'https://images.unsplash.com/photo-1470549638415-0a0755be0619?w=800&q=80',
-    description: 'Open-mic poetry competition with cash prizes. Sign up to perform or come to cheer on local poets.',
-    event_date: '2026-08-07T20:00:00'
+    title: 'Evening Read-Aloud: How to Solve It',
+    location_id: 4,
+    category: 'Public Reading',
+    featured_book: 'How to Solve It',
+    price: '$11.34',
+    host: 'Moonlight Pages',
+    image: 'https://m.media-amazon.com/images/I/71wsHB2XIOL._SL1500_.jpg',
+    description: 'A theatrical group reading of Pólya’s problem-solving classic "How to Solve It," with puzzles to try along the way.',
+    event_date: '2026-03-28T20:00:00'
   },
   {
-    title: 'Indie Author Signing: R. K. Vance',
-    location_id: 2,
-    host: 'Chapter & Verse',
-    image: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&q=80',
-    description: 'Meet rising sci-fi author R. K. Vance and grab a signed first edition of the new "Aurora" trilogy.',
-    event_date: '2026-10-02T19:00:00'
-  },
-  {
-    title: 'Banned Books Week Panel',
-    location_id: 2,
-    host: 'Free Speech Collective',
-    image: 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=800&q=80',
-    description: 'A panel discussion on censorship, intellectual freedom, and the books that shaped the conversation.',
-    event_date: '2026-04-15T18:00:00'
-  },
-
-  // Brew & Books Café (3)
-  {
-    title: 'Weekend Reading Circle',
+    title: 'Riverside Reading Hour',
     location_id: 3,
+    category: 'Public Reading',
+    featured_book: 'The 5 Pillars of Brain Optimization',
+    price: '$14.99',
     host: 'Brew & Books Café',
-    image: 'https://images.unsplash.com/photo-1481833761820-0509d3217039?w=800&q=80',
-    description: 'A relaxed Sunday-morning circle to share what you’re reading over fresh coffee and pastries.',
-    event_date: '2026-06-28T10:00:00'
+    image: 'https://m.media-amazon.com/images/I/61JeDb5SWIL._SL1499_.jpg',
+    description: 'A relaxed Sunday reading of selected passages from "The 5 Pillars of Brain Optimization." Coffee included.',
+    event_date: '2026-06-28T09:30:00'
   },
   {
-    title: 'Latte & Literature: Cozy Mysteries',
-    location_id: 3,
-    host: 'Brew & Books Café',
-    image: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80',
-    description: 'A themed morning celebrating cozy mysteries with recommendations, swaps, and a signature spiced latte.',
-    event_date: '2026-11-14T09:30:00'
-  },
-
-  // Moonlight Pages (4)
-  {
-    title: 'Writers’ Workshop: First Chapters',
-    location_id: 4,
-    host: 'Moonlight Pages',
-    image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=80',
-    description: 'Bring the opening chapter of your manuscript for friendly, constructive feedback from fellow writers.',
-    event_date: '2026-09-05T19:30:00'
-  },
-  {
-    title: 'Open-Mic Storytelling Night',
-    location_id: 4,
-    host: 'Moonlight Pages',
-    image: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=800&q=80',
-    description: 'Five minutes, one true story, no notes. Share a tale or simply listen under the string lights.',
-    event_date: '2026-03-21T20:30:00'
-  },
-  {
-    title: 'Midnight Fantasy Read-Along',
-    location_id: 4,
-    host: 'Moonlight Pages',
-    image: 'https://images.unsplash.com/photo-1518373714866-3f1478910cc0?w=800&q=80',
-    description: 'A theatrical late-night group reading of a beloved fantasy epic, complete with costumes and cocoa.',
-    event_date: '2026-12-13T22:00:00'
-  },
-
-  // The Story Garden (5)
-  {
-    title: 'Saturday Story Hour for Kids',
+    title: 'Garden Read-Aloud: Data & Forecasts',
     location_id: 5,
+    category: 'Public Reading',
+    featured_book: 'Forecasting Time Series Data with Facebook Prophet',
+    price: '$32.50',
     host: 'The Story Garden',
-    image: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80',
-    description: 'Interactive picture-book read-alouds and crafts for ages 3–8. Free for families.',
-    event_date: '2026-07-04T11:00:00'
+    image: 'https://m.media-amazon.com/images/I/71gH-xccjTL._SL1360_.jpg',
+    description: 'An open-air reading + walkthrough of "Forecasting Time Series Data with Facebook Prophet." Bring a notebook.',
+    event_date: '2026-05-16T15:00:00'
+  },
+
+  // ---------- Book Sales ----------
+  {
+    title: 'Tech Shelf Book Sale',
+    location_id: 2,
+    category: 'Book Sale',
+    featured_book: 'C++ High Performance',
+    price: '$46.99',
+    host: 'Chapter & Verse',
+    image: 'https://m.media-amazon.com/images/I/71Y0BwjDzmL._SL1360_.jpg',
+    description: 'Our annual programming-shelf clear-out. Featured pick: "C++ High Performance" at a steal. Cash & card welcome.',
+    event_date: '2026-09-26T11:00:00'
   },
   {
-    title: 'Summer Book Fair',
+    title: 'Summer Book Sale',
     location_id: 5,
+    category: 'Book Sale',
+    featured_book: 'Forecasting Time Series Data with Facebook Prophet',
+    price: '$32.50',
     host: 'Westside Community Board',
-    image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&q=80',
-    description: 'A weekend of pop-up booksellers, author booths, food trucks, and a used-book swap tent.',
+    image: 'https://m.media-amazon.com/images/I/71gH-xccjTL._SL1360_.jpg',
+    description: 'A weekend of pop-up sellers, used-book swaps, and discounted data-science titles in the open-air garden.',
     event_date: '2026-08-22T10:00:00'
   },
   {
-    title: 'Seed & Read Community Read-Aloud',
-    location_id: 5,
-    host: 'The Story Garden',
-    image: 'https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=800&q=80',
-    description: 'Neighbors take turns reading aloud from a shared novel while we plant the season’s garden together.',
-    event_date: '2026-05-09T15:00:00'
+    title: 'Half-Price Weekend',
+    location_id: 3,
+    category: 'Book Sale',
+    featured_book: 'Head First Design Patterns',
+    price: '$40.00',
+    host: 'Brew & Books Café',
+    image: 'https://m.media-amazon.com/images/I/91bobQSPQrL._SL1500_.jpg',
+    description: 'Everything on the café shelves is half off — including the ever-popular "Head First Design Patterns."',
+    event_date: '2026-02-15T09:00:00'
+  },
+  {
+    title: 'Charity Book Sale: Big Ideas',
+    location_id: 1,
+    category: 'Book Sale',
+    featured_book: 'Return of the God Hypothesis',
+    price: '$14.03',
+    host: 'Downtown Library Friends',
+    image: 'https://m.media-amazon.com/images/I/91zjozXE0yL._SL1500_.jpg',
+    description: 'Proceeds fund the children’s wing. Hardcovers of "Return of the God Hypothesis" and hundreds more, gently used.',
+    event_date: '2026-12-06T12:00:00'
+  },
+  {
+    title: 'Pop-Up Sale: Decision Science',
+    location_id: 4,
+    category: 'Book Sale',
+    featured_book: 'Thinking in Bets',
+    price: '$56.01',
+    host: 'Moonlight Pages',
+    image: 'https://m.media-amazon.com/images/I/71EHb6TS9CL._SL1500_.jpg',
+    description: 'A one-night pop-up of strategy and decision-making titles, headlined by a discounted "Thinking in Bets."',
+    event_date: '2026-07-02T19:00:00'
   }
 ]
 

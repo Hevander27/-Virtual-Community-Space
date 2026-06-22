@@ -10,15 +10,43 @@
 }
 
 .event-card__image {
-  flex: 0 0 160px;
-  background-size: cover;
+  flex: 0 0 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
-  min-height: 180px;
+  background-color: #ece4d3;
+  min-height: 210px;
 }
 
 .event-card__body {
   padding: 16px 20px;
   flex: 1;
+}
+
+/* Category badge */
+.event-card__category {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: #1f2a52;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.event-card__category--book-club {
+  background: #2e7d5b;
+}
+
+.event-card__category--public-reading {
+  background: #1f2a52;
+}
+
+.event-card__category--book-sale {
+  background: #e41085;
 }
 
 .event-card__title {
@@ -31,6 +59,26 @@
   margin: 0 0 6px;
   font-weight: 600;
   color: #e41085;
+}
+
+.event-card__book {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.event-card__price {
+  background: #f3e9d2;
+  border: 1px solid #d9c79c;
+  color: #7a5b14;
+  font-weight: 700;
+  padding: 1px 8px;
+  border-radius: 12px;
+  font-size: 13px;
 }
 
 .event-card__date {

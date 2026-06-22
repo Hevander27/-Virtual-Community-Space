@@ -4,12 +4,15 @@ import EventCard from '../components/EventCard'
 import { getAllEvents } from '../services/EventsAPI'
 import { getAllLocations } from '../services/LocationsAPI'
 
+const CATEGORIES = ['Book Club', 'Public Reading', 'Book Sale']
+
 // Stretch feature page: shows ALL events across every location, with the
-// ability to filter by location.
+// ability to filter by location and by category (Book Club / Public Reading / Book Sale).
 const Events = () => {
   const [events, setEvents] = useState([])
   const [locations, setLocations] = useState([])
-  const [filter, setFilter] = useState('all') // 'all' or a location id (as string)
+  const [locationFilter, setLocationFilter] = useState('all') // 'all' or a location id (string)
+  const [categoryFilter, setCategoryFilter] = useState('all') // 'all' or a category name
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -31,32 +34,61 @@ const Events = () => {
   }, [])
 
   const filteredEvents = useMemo(() => {
-    if (filter === 'all') return events
-    return events.filter((event) => String(event.location_id) === filter)
-  }, [events, filter])
+    return events.filter((event) => {
+      const matchesLocation =
+        locationFilter === 'all' || String(event.location_id) === locationFilter
+      const matchesCategory =
+        categoryFilter === 'all' || event.category === categoryFilter
+      return matchesLocation && matchesCategory
+    })
+  }, [events, locationFilter, categoryFilter])
 
   return (
     <div className="Events">
       <section className="events-page-header">
         <h2>All Events</h2>
-        <p>Every reading, signing, and meetup across the BookNook community.</p>
+        <p>Book clubs, public readings, and book sales across the BookNook community.</p>
 
-        <div className="filter-bar">
-          <button
-            className={`filter-btn ${filter === 'all' ? 'filter-btn--active' : ''}`}
-            onClick={() => setFilter('all')}
-          >
-            All locations
-          </button>
-          {locations.map((location) => (
+        <div className="filter-group">
+          <span className="filter-group__label">Type</span>
+          <div className="filter-bar">
             <button
-              key={location.id}
-              className={`filter-btn ${filter === String(location.id) ? 'filter-btn--active' : ''}`}
-              onClick={() => setFilter(String(location.id))}
+              className={`filter-btn ${categoryFilter === 'all' ? 'filter-btn--active' : ''}`}
+              onClick={() => setCategoryFilter('all')}
             >
-              {location.name}
+              All types
             </button>
-          ))}
+            {CATEGORIES.map((category) => (
+              <button
+                key={category}
+                className={`filter-btn ${categoryFilter === category ? 'filter-btn--active' : ''}`}
+                onClick={() => setCategoryFilter(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="filter-group">
+          <span className="filter-group__label">Location</span>
+          <div className="filter-bar">
+            <button
+              className={`filter-btn ${locationFilter === 'all' ? 'filter-btn--active' : ''}`}
+              onClick={() => setLocationFilter('all')}
+            >
+              All locations
+            </button>
+            {locations.map((location) => (
+              <button
+                key={location.id}
+                className={`filter-btn ${locationFilter === String(location.id) ? 'filter-btn--active' : ''}`}
+                onClick={() => setLocationFilter(String(location.id))}
+              >
+                {location.name}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -68,7 +100,7 @@ const Events = () => {
             <EventCard key={event.id} event={event} showLocation={true} />
           ))
         ) : (
-          <h3 className="status-message">No events found for this location.</h3>
+          <h3 className="status-message">No events match these filters.</h3>
         )}
       </main>
     </div>

@@ -2,8 +2,12 @@ import React from 'react'
 import './EventCard.css'
 import { useCountdown, formatEventDate } from '../utils/countdown'
 
-// A card for a single event. Shows a live countdown to the event, and
-// renders with "passed" styling once the event date is in the past.
+// Maps an event category to a CSS modifier so each type gets its own badge color.
+const categoryClass = (category) =>
+  'event-card__category--' + (category || '').toLowerCase().replace(/\s+/g, '-')
+
+// A card for a single event. Shows the featured book, a category badge, a live
+// countdown, and renders with "passed" styling once the event date is in the past.
 const EventCard = ({ event, showLocation = false }) => {
   const countdown = useCountdown(event.event_date)
 
@@ -11,10 +15,21 @@ const EventCard = ({ event, showLocation = false }) => {
     <div className={`event-card ${countdown.hasPassed ? 'event-card--passed' : ''}`}>
       <div className="event-card__image" style={{ backgroundImage: `url(${event.image})` }} />
       <div className="event-card__body">
+        <span className={`event-card__category ${categoryClass(event.category)}`}>
+          {event.category}
+        </span>
+
         <h3 className="event-card__title">{event.title}</h3>
 
         {showLocation && event.location_name && (
           <p className="event-card__location">📍 {event.location_name}</p>
+        )}
+
+        {event.featured_book && (
+          <p className="event-card__book">
+            📖 <strong>{event.featured_book}</strong>
+            {event.price && <span className="event-card__price">{event.price}</span>}
+          </p>
         )}
 
         <p className="event-card__date">{formatEventDate(event.event_date)}</p>
