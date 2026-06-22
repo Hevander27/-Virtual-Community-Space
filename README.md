@@ -1,3 +1,4 @@
+<img width="465" height="360" alt="Screen%20Recording%20-%20Jun%2022%2C%202026" src="https://github.com/user-attachments/assets/5604988f-8978-4477-b6d5-262ec3905caf" />
 # WEB103 Project 3 - *BookNookCommunity*
 
 Submitted by: **Hevander Da Costa**
