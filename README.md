@@ -1,4 +1,4 @@
-<img width="465" height="360" alt="Screen%20Recording%20-%20Jun%2022%2C%202026" src="https://github.com/user-attachments/assets/5604988f-8978-4477-b6d5-262ec3905caf" />
+
 # WEB103 Project 3 - *BookNookCommunity*
 
 Submitted by: **Hevander Da Costa**
@@ -87,7 +87,7 @@ client/
 
 Here's a walkthrough of implemented features:
 
-<img src='https://imgur.com/a/YtqzqX3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img width="465" height="360" alt="Screen%20Recording%20-%20Jun%2022%2C%202026" src="https://github.com/user-attachments/assets/5604988f-8978-4477-b6d5-262ec3905caf" />
 
 <!-- Replace the link above with your own GIF. A raw screen recording (videoplayback.mp4) is included in the repo root — convert it to a GIF before submitting. -->
 GIF created with ...  GIF tool here
