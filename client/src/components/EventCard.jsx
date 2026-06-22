@@ -21,8 +21,11 @@ const EventCard = ({ event, showLocation = false }) => {
 
         <h3 className="event-card__title">{event.title}</h3>
 
-        {showLocation && event.location_name && (
-          <p className="event-card__location">📍 {event.location_name}</p>
+        {event.city && (
+          <p className="event-card__location">
+            📍 {event.city}
+            {showLocation && event.location_name && <span className="event-card__venue"> · {event.location_name}</span>}
+          </p>
         )}
 
         {event.featured_book && (

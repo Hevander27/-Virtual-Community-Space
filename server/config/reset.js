@@ -21,6 +21,7 @@ const createTables = async () => {
       id SERIAL PRIMARY KEY,
       location_id INTEGER NOT NULL REFERENCES locations(id) ON DELETE CASCADE,
       title VARCHAR(150) NOT NULL,
+      city VARCHAR(80) NOT NULL,
       category VARCHAR(50) NOT NULL,
       featured_book VARCHAR(150) NOT NULL,
       price VARCHAR(20) NOT NULL,
@@ -58,8 +59,8 @@ const seedLocationsTable = async () => {
 const seedEventsTable = async () => {
   for (const event of eventData) {
     const insertQuery = {
-      text: 'INSERT INTO events (location_id, title, category, featured_book, price, host, image, description, event_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
-      values: [event.location_id, event.title, event.category, event.featured_book, event.price, event.host, event.image, event.description, event.event_date]
+      text: 'INSERT INTO events (location_id, title, city, category, featured_book, price, host, image, description, event_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
+      values: [event.location_id, event.title, event.city, event.category, event.featured_book, event.price, event.host, event.image, event.description, event.event_date]
     }
 
     try {
