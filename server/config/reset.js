@@ -1,68 +1,86 @@
 import { pool } from '../config/database.js'
 import '../config/dotenv.js'
-import giftData from '../data/gifts.js'
+import locationData from '../data/locations.js'
+import eventData from '../data/events.js'
 
-const createGiftsTable = async () => {
+// Create the locations table (parent) and events table (child, references locations).
+const createTables = async () => {
   const createTableQuery = `
-    DROP TABLE IF EXISTS gifts;
+    DROP TABLE IF EXISTS events;
+    DROP TABLE IF EXISTS locations;
 
-    CREATE TABLE IF NOT EXISTS gifts (
+    CREATE TABLE IF NOT EXISTS locations (
       id SERIAL PRIMARY KEY,
       name VARCHAR(100) NOT NULL,
-      pricePoint VARCHAR(10) NOT NULL,
-      audience VARCHAR(50) NOT NULL,
-      image VARCHAR(255) NOT NULL,
+      neighborhood VARCHAR(100) NOT NULL,
+      image VARCHAR(500) NOT NULL,
+      description TEXT NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS events (
+      id SERIAL PRIMARY KEY,
+      location_id INTEGER NOT NULL REFERENCES locations(id) ON DELETE CASCADE,
+      title VARCHAR(150) NOT NULL,
+      host VARCHAR(100) NOT NULL,
+      image VARCHAR(500) NOT NULL,
       description TEXT NOT NULL,
-      submittedBy VARCHAR(50) NOT NULL,
-      submittedOn TIMESTAMP NOT NULL
-    )
+      event_date TIMESTAMP NOT NULL
+    );
   `
 
   try {
     await pool.query(createTableQuery)
-    console.log('🎉 gifts table created successfully')
+    console.log('🎉 locations and events tables created successfully')
   } catch (err) {
-    console.error('⚠️ error creating gifts table', err)
+    console.error('⚠️ error creating tables', err)
   }
 }
 
-const seedGiftsTable = async () => {
-  await createGiftsTable()
-
-  giftData.forEach((gift) => {
+const seedLocationsTable = async () => {
+  for (const location of locationData) {
     const insertQuery = {
-      text: 'INSERT INTO gifts (name, pricePoint, audience, image, description, submittedBy, submittedOn) VALUES ($1, $2, $3, $4, $5, $6, $7)'
+      text: 'INSERT INTO locations (name, neighborhood, image, description) VALUES ($1, $2, $3, $4)',
+      values: [location.name, location.neighborhood, location.image, location.description]
     }
 
-    const values = [
-      gift.name,
-      gift.pricePoint,
-      gift.audience,
-      gift.image,
-      gift.description,
-      gift.submittedBy,
-      gift.submittedOn
-    ]
-
-    pool.query(insertQuery, values, (err, res) => {
-      if (err) {
-        console.error('⚠️ error inserting gift', err)
-        return
-      }
-      console.log(`✅ ${gift.name} added successfully`)
-    })
-  })
+    try {
+      await pool.query(insertQuery)
+      console.log(`📍 ${location.name} added successfully`)
+    } catch (err) {
+      console.error(`⚠️ error inserting location ${location.name}`, err)
+    }
+  }
 }
 
-seedGiftsTable()
+const seedEventsTable = async () => {
+  for (const event of eventData) {
+    const insertQuery = {
+      text: 'INSERT INTO events (location_id, title, host, image, description, event_date) VALUES ($1, $2, $3, $4, $5, $6)',
+      values: [event.location_id, event.title, event.host, event.image, event.description, event.event_date]
+    }
+
+    try {
+      await pool.query(insertQuery)
+      console.log(`🗓️  ${event.title} added successfully`)
+    } catch (err) {
+      console.error(`⚠️ error inserting event ${event.title}`, err)
+    }
+  }
+}
+
+const resetDatabase = async () => {
+  await createTables()
+  await seedLocationsTable()
+  await seedEventsTable()
+}
+
+resetDatabase()
   .then(() => {
-    console.log('✅ Gifts table seeded successfully')
-    setTimeout(() => {
-      console.log('Closing database connection...')
-      pool.end()
-    }, 2000)
+    console.log('✅ Database seeded successfully')
+    console.log('Closing database connection...')
+    pool.end()
   })
   .catch((err) => {
-    console.error('⚠️ Error seeding gifts table:', err)
+    console.error('⚠️ Error seeding database:', err)
     pool.end()
   })

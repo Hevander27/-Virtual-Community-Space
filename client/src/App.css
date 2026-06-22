@@ -1,0 +1,60 @@
+.App {
+  padding-bottom: 60px;
+}
+
+/* Header */
+.site-header {
+  border-bottom: 3px solid #1f2a52;
+  margin-bottom: 40px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px 24px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.header-left img {
+  height: 56px;
+}
+
+.header-left h1 {
+  font-size: 36px;
+  color: #1f2a52;
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  gap: 12px;
+}
+
+.header-right .navBtn {
+  background-color: #fff;
+  border: 3px solid #1f2a52;
+  border-radius: 16px;
+  color: #1f2a52;
+  cursor: pointer;
+  padding: 12px 18px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 13px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.header-right .navBtn:hover {
+  background-color: #1f2a52;
+  color: #fff;
+}

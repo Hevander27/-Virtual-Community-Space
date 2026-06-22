@@ -1,0 +1,92 @@
+.event-card {
+  display: flex;
+  width: 100%;
+  max-width: 640px;
+  background: #fffdf7;
+  border: 2px solid #1f2a52;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 6px 6px 0 rgba(31, 42, 82, 0.1);
+}
+
+.event-card__image {
+  flex: 0 0 160px;
+  background-size: cover;
+  background-position: center;
+  min-height: 180px;
+}
+
+.event-card__body {
+  padding: 16px 20px;
+  flex: 1;
+}
+
+.event-card__title {
+  margin: 0 0 6px;
+  font-size: 20px;
+  color: #1f2a52;
+}
+
+.event-card__location {
+  margin: 0 0 6px;
+  font-weight: 600;
+  color: #e41085;
+}
+
+.event-card__date {
+  margin: 0 0 4px;
+  font-weight: 600;
+  color: #333;
+}
+
+.event-card__host {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.event-card__description {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444;
+}
+
+.event-card__countdown {
+  display: inline-block;
+}
+
+.event-card__upcoming-label {
+  display: inline-block;
+  background: #1f2a52;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.event-card__passed-label {
+  display: inline-block;
+  background: #eee;
+  color: #999;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Passed events are visually de-emphasised and struck through */
+.event-card--passed {
+  opacity: 0.6;
+  border-color: #bbb;
+}
+
+.event-card--passed .event-card__title {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.event-card--passed .event-card__location {
+  color: #aaa;
+}

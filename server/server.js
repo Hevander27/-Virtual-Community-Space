@@ -1,26 +1,23 @@
 import express from 'express'
-import dotenv from 'dotenv'
-import giftsRouter from './routes/gifts.js'
+import './config/dotenv.js'
+import cors from 'cors'
+import locationsRouter from './routes/locations.js'
+import eventsRouter from './routes/events.js'
 
 const app = express()
 
-// Serve static files from the 'public' directory
-app.use('/public', express.static('./public'))
+app.use(cors())
+app.use(express.json())
 
-// Serve static files from the 'scripts' directory
-app.use('/scripts', express.static('./public/scripts'))
+app.use('/api/locations', locationsRouter)
+app.use('/api/events', eventsRouter)
 
-// Use the gifts router
-app.use('/gifts', giftsRouter)
-
-// Define root route
 app.get('/', (req, res) => {
-  res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">BookNook API</h1>')
+  res.status(200).send('<h1 style="text-align: center; margin-top: 50px;">BookNook API 📚</h1>')
 })
 
-// Start the server
 const PORT = process.env.PORT || 3001
-    
+
 app.listen(PORT, () => {
   console.log(`🚀 Server listening on http://localhost:${PORT}`)
 })

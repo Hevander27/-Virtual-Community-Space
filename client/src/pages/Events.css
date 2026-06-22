@@ -1,0 +1,60 @@
+.Events {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+.events-page-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.events-page-header h2 {
+  font-size: 34px;
+  color: #1f2a52;
+  margin: 0 0 8px;
+}
+
+.events-page-header p {
+  color: #555;
+  margin: 0 0 24px;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filter-btn {
+  background: #fff;
+  border: 2px solid #1f2a52;
+  color: #1f2a52;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.filter-btn:hover {
+  background: rgba(31, 42, 82, 0.08);
+}
+
+.filter-btn--active {
+  background: #1f2a52;
+  color: #fff;
+}
+
+.events-page-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.status-message {
+  color: #888;
+  text-align: center;
+}

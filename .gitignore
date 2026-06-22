@@ -31,3 +31,5 @@ dist-ssr
 # Environment variables
 .env
 server/.env
+# Claude Code local files
+.claude/

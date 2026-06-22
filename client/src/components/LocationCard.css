@@ -1,0 +1,64 @@
+.location-card {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  background: #fffdf7;
+  border: 2px solid #1f2a52;
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 8px 8px 0 rgba(31, 42, 82, 0.12);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.location-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 12px 12px 0 rgba(228, 16, 133, 0.18);
+}
+
+.location-card__image {
+  position: relative;
+  height: 190px;
+  background-size: cover;
+  background-position: center;
+}
+
+.location-card__badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: #1f2a52;
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.location-card__body {
+  padding: 16px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.location-card__body h3 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  color: #1f2a52;
+}
+
+.location-card__body p {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444;
+  flex: 1;
+}
+
+.location-card__cta {
+  font-weight: 700;
+  color: #e41085;
+}

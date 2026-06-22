@@ -1,0 +1,68 @@
+.LocationDetails {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #e41085;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.location-hero {
+  border-radius: 18px;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 48px 36px;
+  margin-bottom: 36px;
+}
+
+.location-hero__badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+
+.location-hero__content h2 {
+  margin: 0 0 10px;
+  font-size: 36px;
+}
+
+.location-hero__content p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+.events-section__heading {
+  font-size: 24px;
+  color: #1f2a52;
+  margin-bottom: 20px;
+}
+
+.events-section__heading span {
+  color: #999;
+  font-weight: 400;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.status-message {
+  color: #888;
+}
